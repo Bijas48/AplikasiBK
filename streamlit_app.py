@@ -127,21 +127,20 @@ if st.session_state.entered_prompt != "":
     # Append AI response to generated responses
     st.session_state.generated.append(output)
 
-# Check for specific user keywords to trigger the report functionality
-trigger_words = {
-    "laporkan": "Halo, saya ingin melaporkan sebuah masalah.",
-    "pembulian": "Halo, saya ingin melaporkan kasus pembulian.",
-    "pingin chat": "Halo, saya ingin berbicara dengan seseorang.",
-    "pribadi": "Halo, saya memiliki masalah pribadi yang ingin saya diskusikan.",
-    "masalah keluarga": "Halo, saya menghadapi masalah keluarga.",
-}
-
-for word, message in trigger_words.items():
-    if word in user_query.lower():
+    # Check for specific user keywords to trigger the report functionality
+    trigger_words = [
+        "laporkan",
+        "pembulian",
+        "pingin chat",
+        "pribadi",
+        "masalah keluarga",
+    ]
+    if any(word in user_query.lower() for word in trigger_words):
         whatsapp_number = "6281809460647"  # nomor tujuan Anda
-        link = f"https://api.whatsapp.com/send?phone={whatsapp_number}&text={message}"
+        report_message = "Permisi ibu, saya ingin ..."  # pesan awal yang akan muncul di chat WhatsApp
+        link = f"https://api.whatsapp.com/send?phone={whatsapp_number}&text={report_message}"
+
         st.link_button("Laporkan Via WhatsApp", link)
-        break  # Break setelah menemukan kata kunci pertama agar tidak menampilkan beberapa tautan.
 
 # Display the chat history
 if st.session_state["generated"]:
