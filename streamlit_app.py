@@ -15,7 +15,7 @@ load_dotenv()
 
 # Set streamlit page configuration
 st.set_page_config(page_title="ChatBot Bimbingan Konseling")
-st.title("ChatBot Bimbingan Konseling: Teman Virtual Anda")
+st.title("SahabatBK : ChatBot Bimbingan Konseling dan Teman Virtual Anda")
 
 # Initialize session state variables
 if "generated" not in st.session_state:
@@ -159,21 +159,19 @@ st.markdown(
 )
 
 # Sidebar
-st.sidebar.title("ChatBot Bimbingan Konseling")
+st.sidebar.title("SahabatBK")
 st.sidebar.subheader("Teman Virtual Anda")
 st.sidebar.markdown(
     """
-Platform ini dirancang untuk membantu siswa dengan 
-pertanyaan-pertanyaan mengenai bimbingan konseling. 
-Untuk menggunakannya, cukup ketikkan pertanyaan 
-atau pernyataan Anda pada kotak chat dan Anda akan 
-mendapatkan tanggapan dari ChatBot.
+**SahabatBK** dirancang untuk membantu siswa dengan pertanyaan-pertanyaan mengenai **bimbingan konseling**. 
+Untuk menggunakannya, cukup ketikkan pertanyaan atau pernyataan Anda pada kotak chat dan Anda akan mendapatkan tanggapan dari ChatBot.
 """
 )
 with st.sidebar.expander("Butuh Bantuan Langsung?"):
     st.write(
         """
-        Jika Anda menghadapi masalah serius seperti pembulian atau memerlukan bantuan langsung dari guru BK, Anda dapat menyampaikannya langsung melalui platform ini. 
-        Ketik pesan Anda dan kami akan mengarahkan Anda untuk berkomunikasi langsung dengan guru BK melalui WhatsApp.
+        Jika Anda menghadapi masalah serius seperti **:blue[pembulian]** atau memerlukan **:blue[bantuan langsung dari guru BK]**, 
+Anda dapat menyampaikannya langsung melalui platform ini. **:blue[Ketik pesan Anda]** dan kami akan mengarahkan Anda 
+untuk berkomunikasi langsung dengan guru BK melalui WhatsApp.
     """
     )
