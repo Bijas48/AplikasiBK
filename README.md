@@ -29,12 +29,13 @@ Chatbot ini merupakan demonstrasi integrasi model GPT OpenAI, pustaka LangChain,
 
 1. Clone repository ini.
 2. Instal paket Python yang diperlukan dengan menggunakan perintah `pip install -r requirements.txt`.
-3. Buat file "environment variable" dengan nama filenya (**env.**) untuk menyimpan kunci API OpenAI Anda.
+3. Buat file "environment variable" dengan nama filenya (**env.**) untuk menyimpan Key API OpenAI Anda.
 4. Pada file **env.** pada baris code 1 yang diisi oleh **API OpenAi** anda.
-```
-OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxWV"
-```
-**Catatan** isi variable "**OPENAI_API_KEY**" tinggal diganti saja dengan **API OpenAi** anda.
+  ```
+  OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxWV"
+  ```
+  **Catatan** isi variable "**OPENAI_API_KEY**" tinggal diganti saja dengan **Key API OpenAi** anda.
+
 5. Jalankan aplikasi Streamlit menggunakan perintah `streamlit run streamlit_app.py`.
 
 ## Penggunaan
