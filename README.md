@@ -1,46 +1,49 @@
 # ChatBot Starter with Streamlit, OpenAI, and LangChain
 
-This repository contains a simple yet powerful chatbot built with Streamlit, OpenAI, and LangChain. The chatbot maintains conversational memory, meaning it can reference past exchanges in its responses.
+Repositori ini berisi chatbot yang sederhana namun kuat yang dibangun dengan Streamlit, OpenAI, dan LangChain. Chatbot mempertahankan memori percakapan, yang berarti dapat merujuk pada pertukaran sebelumnya dalam tanggapannya.
 
 ## Overview
 
-The chatbot is a demonstration of integrating OpenAI's GPT model, the LangChain library, and Streamlit for creating interactive web applications. The bot's conversational memory allows it to maintain context during the chat session, leading to a more coherent and engaging user experience. Importantly, this feature-rich chatbot application is implemented in less than 40 lines of code (excluding whitespace and comments)!
+Chatbot ini merupakan demonstrasi integrasi model GPT OpenAI, pustaka LangChain, dan Streamlit untuk membuat aplikasi web interaktif. Memori percakapan bot memungkinkannya untuk mempertahankan konteks selama sesi obrolan, sehingga menghasilkan pengalaman pengguna yang lebih koheren dan menarik. Yang terpenting, aplikasi chatbot yang kaya fitur ini diimplementasikan dalam kurang dari 80 baris kode (tidak termasuk spasi dan komentar)!
 
 ### Key Features
 
-- **Streamlit:** A powerful, fast Python framework used to create the web interface for the chatbot.
-- **OpenAI's GPT:** A state-of-the-art language processing AI model that generates the chatbot's responses.
-- **LangChain:** A wrapper library for the ChatGPT model that helps manage conversation history and structure the model's responses.
+- **Streamlit:** Kerangka kerja Python yang kuat dan cepat yang digunakan untuk membuat antarmuka web untuk chatbot.
+- **OpenAI's GPT:** Model AI pemrosesan bahasa mutakhir yang menghasilkan respons chatbot.
+- **LangChain:** Library pembungkus untuk model ChatGPT yang membantu mengelola riwayat percakapan dan menyusun respons model.
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-starter.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sahabatbk.streamlit.app/)
 
-## How to Run
+## Bagaimana cara menjalankannya
 
-### Prerequisites
+### Yang dibutuhkan
 
-- Python 3.6 or higher
+- Python 3.6 atau versi diatas
 - Streamlit
 - LangChain
 - OpenAI API key
 
-### Steps
+### Langkah-langkah
 
-1. Clone this repository.
-2. Install the necessary Python packages using the command `pip install -r requirements.txt`.
-3. Set the environment variable for your OpenAI API key.
-4. Run the Streamlit app using the command `streamlit run streamlit_app.py`.
+1. Clone repository ini.
+2. Instal paket Python yang diperlukan dengan menggunakan perintah `pip install -r requirements.txt`.
+3. Buat file "environment variable" dengan nama filenya (**env.**) untuk menyimpan kunci API OpenAI Anda.
+4. Pada file **env.** pada baris code 1 yang diisi oleh **API OpenAi** anda.
+```
+OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxWV"
+```
+**Catatan** isi variable "**OPENAI_API_KEY**" tinggal diganti saja dengan **API OpenAi** anda.
+5. Jalankan aplikasi Streamlit menggunakan perintah `streamlit run streamlit_app.py`.
 
-## Usage
+## Penggunaan
 
-The chatbot starts with a system message that sets the tone for the conversation. It then alternates between receiving user inputs and generating AI responses. The conversation history is stored and used as context for generating future responses, allowing the chatbot to maintain conversational continuity.
+Chatbot ini dirancang khusus untuk membantu siswa dengan pertanyaan-pertanyaan mengenai bimbingan konseling. Fungsinya meliputi memberikan informasi, saran, dan arahan terkait isu-isu konseling, serta mengarahkan siswa untuk berkomunikasi langsung dengan guru BK jika diperlukan.
+## Kontribusi
 
-## Contribution
+Kontribusi, masalah, dan permintaan fitur dipersilakan. Silakan kunjungi halaman [Masalah](https://github.com/Bijas48/AplikasiBK/issues) jika Anda ingin berkontribusi.
+## Lisensi
 
-Contributions, issues, and feature requests are welcome. Feel free to check the [Issues](https://github.com/AustonianAI/chatbot-starter/issues) page if you want to contribute.
-
-## License
-
-This project is licensed under the terms of the MIT license.
+Proyek ini dilisensikan di bawah ketentuan lisensi MIT.
 #
