@@ -4,6 +4,7 @@ from itertools import zip_longest
 
 import streamlit as st
 from streamlit_chat import message
+import time
 
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
@@ -29,10 +30,6 @@ if "entered_prompt" not in st.session_state:
 
 # Initialize the ChatOpenAI model
 chat = ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo")
-
-
-def create_whatsapp_link(number, message):
-    return f"https://api.whatsapp.com/send?phone={number}&text={message}"
 
 
 def build_message_list():
@@ -83,6 +80,30 @@ def submit():
 st.text_input("Saya: ", key="prompt_input", on_change=submit)
 
 
+# Buat fungsi untuk menampilkan progress bar dengan durasi yang disesuaikan
+def display_progress_bar(duration):
+    progress_text = "ChatBot sedang memproses pesan Anda..."
+    progress_text_placeholder = st.empty()  # <-- Ini harus ada
+    progress_text_placeholder.write(progress_text)  # <-- Dan ini juga
+    my_bar = st.progress(0)
+
+    increment = 0.01  # Setiap increment ini akan menambah progress bar sebesar 1%
+    num_updates = int(duration // increment)
+
+    for idx in range(num_updates):
+        time.sleep(increment)
+        current_progress = (
+            idx + 1
+        ) / num_updates  # Menghitung progress berdasarkan iterasi saat ini
+        my_bar.progress(current_progress)
+
+    # Pastikan progress bar mencapai 100% di akhir durasi
+    my_bar.progress(1)
+    time.sleep(0.5)
+    my_bar.empty()
+    progress_text_placeholder.empty()
+
+
 # Get user query and check for trigger words within the same block
 if st.session_state.entered_prompt != "":
     # Get user query
@@ -91,30 +112,36 @@ if st.session_state.entered_prompt != "":
     # Append user query to past queries
     st.session_state.past.append(user_query)
 
+    # Mulai penghitungan waktu
+    start_time = time.time()
+
     # Generate response
     output = generate_response()
+
+    # Hitung durasi yang diperlukan untuk menghasilkan respons
+    elapsed_time = time.time() - start_time
+
+    # Tampilkan progress bar dengan durasi yang telah diukur
+    display_progress_bar(elapsed_time)
 
     # Append AI response to generated responses
     st.session_state.generated.append(output)
 
-    # Check for specific user keywords to trigger the report functionality
-    trigger_words = [
-        "laporkan",
-        "pembulian",
-        "pingin chat",
-        "pribadi",
-        "masalah keluarga",
-    ]
-    if any(word in user_query.lower() for word in trigger_words):
-        whatsapp_number = "6281809460647"  # nomor tujuan Anda
-        report_message = "Halo, saya ingin melaporkan tentang..."  # pesan awal yang akan muncul di chat WhatsApp
-        link = create_whatsapp_link(whatsapp_number, report_message)
+# Check for specific user keywords to trigger the report functionality
+trigger_words = {
+    "laporkan": "Halo, saya ingin melaporkan sebuah masalah.",
+    "pembulian": "Halo, saya ingin melaporkan kasus pembulian.",
+    "pingin chat": "Halo, saya ingin berbicara dengan seseorang.",
+    "pribadi": "Halo, saya memiliki masalah pribadi yang ingin saya diskusikan.",
+    "masalah keluarga": "Halo, saya menghadapi masalah keluarga.",
+}
 
-        if st.button("Laporkan Via WhatsApp"):
-            st.write(
-                f'<meta http-equiv="refresh" content="0; URL={link}">',
-                unsafe_allow_html=True,
-            )
+for word, message in trigger_words.items():
+    if word in user_query.lower():
+        whatsapp_number = "6281809460647"  # nomor tujuan Anda
+        link = f"https://api.whatsapp.com/send?phone={whatsapp_number}&text={message}"
+        st.link_button("Laporkan Via WhatsApp", link)
+        break  # Break setelah menemukan kata kunci pertama agar tidak menampilkan beberapa tautan.
 
 # Display the chat history
 if st.session_state["generated"]:
@@ -135,7 +162,7 @@ st.markdown(
 # Sidebar
 st.sidebar.title("ChatBot Bimbingan Konseling")
 st.sidebar.subheader("Teman Virtual Anda")
-st.sidebar.text(
+st.sidebar.markdown(
     """
 Platform ini dirancang untuk membantu siswa dengan 
 pertanyaan-pertanyaan mengenai bimbingan konseling. 
