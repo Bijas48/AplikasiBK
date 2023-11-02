@@ -136,7 +136,7 @@ if st.session_state.entered_prompt != "":
         "masalah keluarga",
     ]
     if any(word in user_query.lower() for word in trigger_words):
-        whatsapp_number = "6281809460647"  # nomor tujuan Anda
+        whatsapp_number = "6285759217336"  # nomor tujuan Anda
         report_message = "Permisi ibu, saya ingin ..."  # pesan awal yang akan muncul di chat WhatsApp
         link = f"https://api.whatsapp.com/send?phone={whatsapp_number}&text={report_message}"
 
