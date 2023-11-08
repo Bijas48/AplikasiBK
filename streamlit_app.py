@@ -39,7 +39,7 @@ def build_message_list():
     # Start zipped_messages with the SystemMessage
     zipped_messages = [
         SystemMessage(
-            content="A Professional Guidance and Counseling Assistant, equipped to guide students in personal, social, academic, and career-related concerns. If a question falls outside the realm of guidance counseling or the aforementioned areas, please respond with 'That's beyond my capabilities' or 'I cannot answer that'."
+            content="The Professional Guidance and Counseling Assistants, who are available to guide students in personal, social, academic, and career matters. If the question is outside the area of counseling guidance or the areas mentioned above, please respond with 'That is beyond my ability' or 'I cannot answer that'.If you would like to 'report', 'bullying', 'chat', 'personal matters', 'family problems', 'direct consultation', 'consultation'. You may contact your Guidance Counselor based on your class."
         )
     ]
 
@@ -134,13 +134,30 @@ if st.session_state.entered_prompt != "":
         "pingin chat",
         "pribadi",
         "masalah keluarga",
+        "konsultasi langsung",
+        "konsultasi",
     ]
     if any(word in user_query.lower() for word in trigger_words):
-        whatsapp_number = "6285759217336"  # nomor tujuan Anda
         report_message = "Permisi ibu, saya ingin ..."  # pesan awal yang akan muncul di chat WhatsApp
-        link = f"https://api.whatsapp.com/send?phone={whatsapp_number}&text={report_message}"
 
-        st.link_button("Laporkan Via WhatsApp", link)
+        st.write(
+            """
+                Anda Juga dapat Menghubungi **:orange[Guru Bimbingan Konseling]** Secara Langsung dengan Menekan Tombol yang ada di Bawah ini
+            """
+        )
+
+        st.link_button(
+            "Klik Tombol ini untuk Kelas 7 (Bu May)",
+            f"https://api.whatsapp.com/send?phone=6285294603683&text={report_message}",
+        )
+        st.link_button(
+            "Klik Tombol ini untuk Kelas 8 (Bu Larisa)",
+            f"https://api.whatsapp.com/send?phone=6287834913339&text={report_message}",
+        )
+        st.link_button(
+            "Klik Tombol ini untuk Kelas 9 (Bu Silia)",
+            f"https://api.whatsapp.com/send?phone=6285759217336&text={report_message}",
+        )
 
 # Display the chat history
 if st.session_state["generated"]:
@@ -171,7 +188,20 @@ with st.sidebar.expander("Butuh Bantuan Langsung?"):
     st.write(
         """
         Jika Anda menghadapi masalah serius seperti **:blue[pembulian]** atau memerlukan **:blue[bantuan langsung dari guru BK]**, 
-Anda dapat menyampaikannya langsung melalui platform ini. **:blue[Ketik pesan Anda]** dan kami akan mengarahkan Anda 
-untuk berkomunikasi langsung dengan guru BK melalui WhatsApp.
+Anda dapat menyampaikannya langsung melalui platform ini. **:blue[Ketik pesan Anda]** dan robot akan mengarahkan Anda 
+untuk berkomunikasi langsung dengan guru BK melalui WhatsApp atau dapat menekan tombol dibawah ini berdasarkan kelasnya
     """
+    )
+    report_message = "Permisi ibu, saya ingin ..."
+    st.link_button(
+        "Menghubungi Kelas 7 (Bu May)",
+        f"https://api.whatsapp.com/send?phone=6285294603683&text={report_message}",
+    )
+    st.link_button(
+        "Menghubungi Kelas 8 (Bu Larisa)",
+        f"https://api.whatsapp.com/send?phone=6287834913339&text={report_message}",
+    )
+    st.link_button(
+        "Menghubungi Kelas 9 (Bu Silia)",
+        f"https://api.whatsapp.com/send?phone=6285759217336&text={report_message}",
     )
