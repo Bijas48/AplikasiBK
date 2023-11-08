@@ -194,14 +194,14 @@ untuk berkomunikasi langsung dengan guru BK melalui WhatsApp atau dapat menekan 
     )
     report_message = "Permisi ibu, saya ingin ..."
     st.link_button(
-        "Menghubungi Kelas 7 (Bu May)",
+        "Menghubungi Guru BK Kelas 7 (Bu May)",
         f"https://api.whatsapp.com/send?phone=6285294603683&text={report_message}",
     )
     st.link_button(
-        "Menghubungi Kelas 8 (Bu Larisa)",
+        "Menghubungi Guru BK Kelas 8 (Bu Larisa)",
         f"https://api.whatsapp.com/send?phone=6287834913339&text={report_message}",
     )
     st.link_button(
-        "Menghubungi Kelas 9 (Bu Silia)",
+        "Menghubungi Guru BK Kelas 9 (Bu Silia)",
         f"https://api.whatsapp.com/send?phone=6285759217336&text={report_message}",
     )
