@@ -77,7 +77,7 @@ def submit():
 
 
 # Create a text input for user
-st.text_input("Saya: ", key="prompt_input", on_change=submit)
+st.text_input("Tuliskan Curhatanmu disini... ", key="prompt_input", on_change=submit)
 
 
 # Buat fungsi untuk menampilkan progress bar dengan durasi yang disesuaikan
